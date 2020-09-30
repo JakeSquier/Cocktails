@@ -10,16 +10,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_29_195016) do
+ActiveRecord::Schema.define(version: 2020_09_30_015917) do
 
-  create_table "preferences", force: :cascade do |t|
+  create_table "disliked_items", force: :cascade do |t|
     t.integer "user_id"
     t.integer "drink_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "drink_ingredients", force: :cascade do |t|
+    t.integer "ingredient_id"
+    t.integer "drink_id"
+    t.string "measurement"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "drinks", force: :cascade do |t|
+    t.string "name"
+    t.string "category"
+    t.string "glass"
+    t.string "alcoholic"
+    t.string "instructions"
+    t.string "img_url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "ingredients", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "liked_items", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "drink_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
+    t.integer "age"
+    t.string "email"
   end
 
 end
