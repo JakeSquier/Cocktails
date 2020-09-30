@@ -3,6 +3,7 @@ class CreateDrinkIngredients < ActiveRecord::Migration[6.0]
     create_table :drink_ingredients do |t|
       t.integer :ingredient_id
       t.integer :drink_id
+      t.string :measurement
       t.timestamps
     end
   end
