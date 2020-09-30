@@ -22482,29 +22482,31 @@ def seedDB(data)
     # end 
     # puts "hi"
     data.each do |drink|
+        recentDrink = Drink.create(
+            name: drink[:strDrink],
+            category: drink[:strCategory],
+            glass: drink[:strGlass],
+            alcoholic: drink[:strAlcoholic],
+            instructions: drink[:strInstructions],
+            img_url: drink[:strDrinkThumb]
+        )
         count = 1
         drink.each do | k, v |
-            Drink.create(
-                name: drink[:strDrink],
-                category: drink[:strCategory],
-                glass: drink[:strGlass],
-                alcoholic: drink[:strAlcoholic],
-                instructions: drink[:strInstructions],
-                img_url: drink[:strDrinkThumb]
-            )
             measureKey = 'strMeasure' + count.to_s
             if k.to_s.starts_with?('strIngredient') && v != nil
                 # check if ingredient is in database then create new ingredient or grab existing ingredient id: 
+                ingredient = Ingredient.new
                 if Ingredient.all.find_by_name(v)
                     ingredient = Ingredient.all.find_by_name(v)
+                    DrinkIngredient.create(ingredient: ingredient, drink: recentDrink, measurement: drink[measureKey.to_sym])
                 else
                     ingredient = Ingredient.create(name: v)
+                    DrinkIngredient.create(ingredient: ingredient, drink: recentDrink, measurement: drink[measureKey.to_sym])
                 end
 
-                drink = Drink.all.find_by_name(drink[:strDrink])
+                puts ingredient.id
                 #create new DrinkIngredient using id from created Drink ^^^, id from created or existing Ingredient ^, and measurement vale v
-                DrinkIngredient.create(ingredient_id: ingredient.id, drink_id: drink.id, measurement: drink[measureKey.to_sym])
-                puts drink[:strDrink]
+                puts v
                 count += 1
             end
         end
