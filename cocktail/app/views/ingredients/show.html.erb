@@ -1,1 +1,15 @@
-<h1> <%= @ingredient.name %> </h1>
+<!DOCTYPE html>
+<html>
+    <head>
+        <% stylesheet_link_tag "ingredient_show"%>
+        <h1 class><%= @ingredient.name%></h1>
+    </head>
+    <body>
+        
+       Drinks:
+            <% @ingredient.drinks.each do | drink | %>
+                <li> <%= link_to drink.name, drink_path(drink) %> </li>
+            <% end %>
+
+    </body>
+</html>

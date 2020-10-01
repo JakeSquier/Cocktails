@@ -1,5 +1,12 @@
-<h1>This is Drink list</h1>
-
-<% @drinks.each do | drink |%>
-   <li> <%= link_to drink.name, drink_path(drink)%> </li>
-<% end %>
+<!DOCTYPE html>
+<html>
+   <head>
+      <% stylesheet_link_tag "drink_index" %>
+      <h1 class=“head”>Drinks</h1>
+   </head>
+   <body>
+      <% @drinks.each do | drink |%>
+         <li class=“link”> <%= link_to drink.name, drink_path(drink)%> </li>
+      <% end %>
+   </body>
+</html>

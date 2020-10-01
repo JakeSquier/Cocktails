@@ -1,5 +1,12 @@
-<h1>This is Ingredient list</h1>
-
-<% @ingredients.each do | ingredient |%>
-   <li> <%= link_to ingredient.name, ingredient_path(ingredient)%> </li>
-<% end %>
+<!DOCTYPE html>
+<html>
+   <head>
+      <% stylesheet_link_tag "ingredient_index" %>
+      <h1 class=“head”>Ingredients</h1>
+   </head>
+   <body>
+      <% @ingredients.each do | ingredient |%>
+         <li class=“link”> <%= link_to ingredient.name, ingredient_path(ingredient)%> </li>
+      <% end %>
+   </body>
+</html>
