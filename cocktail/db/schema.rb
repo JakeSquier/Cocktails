@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2020_09_30_015917) do
   create_table "drink_ingredients", force: :cascade do |t|
     t.integer "ingredient_id"
     t.integer "drink_id"
+    t.string "measurement"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
