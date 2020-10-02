@@ -15,9 +15,6 @@
             <% @drink.ingredients.each do | ingredient | %>
                 <li> <%= link_to ingredient.name, ingredient_path(ingredient) %> </li>
             <% end %>
-            <% @drink.drink_ingredients.each do | di | %>
-                <li> <%= di.measurement %> </li>
-            <% end %>
-        <img src=<%= @drink.img_url%> alt=“a pic”>
+
     </body>
 </html>

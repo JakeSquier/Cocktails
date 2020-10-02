@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2020_09_30_015917) do
     t.string "last_name"
     t.integer "age"
     t.string "email"
+    t.string "password_digest"
   end
 
 end
