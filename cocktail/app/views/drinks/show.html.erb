@@ -15,6 +15,8 @@
             <% @drink.ingredients.each do | ingredient | %>
                 <li> <%= link_to ingredient.name, ingredient_path(ingredient) %> </li>
             <% end %>
-        <img src=<%= @drink.img_url%> alt=“a pic”>
+        <img src=<%= @drink.img_url%> alt="a pic"><br>
+        <button onclick="<% LikedItem.like(session[:id], @drink.id) %>">Like Drink</button>
+        <button onclick="">Dislike Drink</button>
     </body>
 </html>
